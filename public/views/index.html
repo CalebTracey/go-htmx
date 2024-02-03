@@ -1,0 +1,14 @@
+{{ define "index.html" }}
+<html lang="en">
+<head>
+    <title>{{ template "title" . }}</title>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+</head>
+    {{ template "header.html" . }}
+    {{ template "body.html" . }}
+</html>
+{{ end }}
+
+{{define "title"}}
+    {{index . "app-title"}}
+{{end}}

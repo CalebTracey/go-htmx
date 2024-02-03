@@ -1,0 +1,12 @@
+{{ define "body.html" }}
+<body>
+<div style="display: flex; flex-direction: column; background-color: #e7d5d5; padding: 1rem">
+    <h1>About</h1>
+    <p>Hello {{ index . "name" }} </p>
+    <!--        <p>{{ with $x := index . "reverse" }}-->
+    <!--            {{ call $x "foobar" }} &lt;-->
+    <!--            {{ end }}-->
+    <!--        </p>-->
+</div>
+</body>
+{{ end }}
