@@ -1,0 +1,30 @@
+{{ define "index.html" }}
+<html lang="en">
+<head>
+    <title>{{ template "title" . }}</title>
+<!--    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
+    <script src="/dist/bundle.js"></script>
+</head>
+    <body style="margin: 0">
+        {{ template "header" . }}
+        {{ template "body" . }}
+    </body>
+</html>
+{{ end }}
+
+{{ define "header" }}
+<div class="app-header">
+    <h1>this is a header</h1>
+    <span style="padding: 2rem"></span>
+    <button onclick="window.location.assign('/about')" type="button">about</button>
+    <span style="padding: 2rem"></span>
+    <span>{{ index . "user" }}</span>
+</div>
+{{ end }}
+
+{{define "title"}}
+    {{index . "app-title"}}
+{{end}}

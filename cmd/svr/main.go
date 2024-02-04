@@ -1,35 +1,37 @@
 package main
 
 import (
-	"errors"
+	"github.com/calebtracey/go-htmx/internal/routes"
 	"github.com/calebtraceyco/config"
 	"github.com/labstack/gommon/log"
 )
 
-const configPath = "config.yaml"
+const configPath = "cmd/svr/config.yaml"
 
 func main() {
 	defer recoverPanic()
 
-	if routeHandler, err := establishHandler(config.New(configPath)); err == nil {
+	appConfig := config.New(configPath)
 
-		e := *routeHandler.Initialize()
-		e.Logger.Fatal(e.Start(localhost))
+	if routeHandler, err := routes.HandlerConfig(appConfig); err == nil {
+		if routeHandler := routeHandler.Initialize(); routeHandler != nil {
+			// run the app
+			routeHandler.Logger.Fatal(routeHandler.Start(hostName + appConfig.Port))
+		}
+		// blah asdasd
 
 	} else {
-		panic(err)
+		log.Fatalf("failed to establish handler: %v", err)
 	}
 
 }
-
-var nilConfigError = errors.New("nil config")
 
 func recoverPanic() {
 	if r := recover(); r != nil {
-		log.Errorf("I panicked and am quitting: %v", r)
-		log.Error("I should be alerting someone...")
+		log.Error("=== the app panicked...\n")
+		log.Errorf("=== recover: %v", r)
 	}
 }
 
-const localhost = "localhost:42069"
+const hostName = "localhost:"
 const htmxSource = "https://unpkg.com/htmx.org@1.9.6"

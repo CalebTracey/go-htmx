@@ -2,12 +2,11 @@ package templates
 
 import (
 	"fmt"
-	"github.com/calebtracey/go-htmx/internal/common/files"
+	"github.com/calebtracey/go-htmx/internal/common/pages"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	"html/template"
 	"io"
-	"os"
 )
 
 type Templates struct {
@@ -24,7 +23,7 @@ func (t *Templates) Render(w io.Writer, name string, data any, c echo.Context) e
 			// 	viewContext["reverse"] = c.Echo().Reverse
 			// }
 			log.Infof("=== Rendering '%s'...", name)
-			return t.templates[name].ExecuteTemplate(w, files.Index, data)
+			return t.templates[name].ExecuteTemplate(w, pages.Index, data)
 		} else {
 			return fmt.Errorf("template error: '%s' not found", name)
 		}
@@ -32,12 +31,14 @@ func (t *Templates) Render(w io.Writer, name string, data any, c echo.Context) e
 	return fmt.Errorf("template: '%s' not registered", name)
 }
 
-func (t *Templates) Initialize(options ...TemplateOption) {
+func (t *Templates) Add(options ...TemplateOption) {
 	if templateCount := len(options); templateCount > 0 {
 		t.templates = make(TemplateMap, templateCount)
 		for _, opt := range options {
 			opt(t)
 		}
+	} else {
+		log.Warn("missing templates")
 	}
 }
 
@@ -48,21 +49,10 @@ type TemplateArgs struct {
 	ComponentFiles []string
 }
 
-func WithTemplate(name, parent string) TemplateOption {
+func With(name string) TemplateOption {
 	return func(t *Templates) {
-		// var filePaths []string
-		// if fileCount := len(files); fileCount > 0 {
-		// 	filePaths = make([]string, fileCount)
-		// 	for i, f := range files {
-		// 		filePaths[i] = viewPath + f
-		// 	}
-		// }
-		if pwd, err := os.Getwd(); err == nil {
-			log.Infof("=== working dir: \"%s\"", pwd)
-		}
-		// add the "parent" file as the last element for ParseFiles function
 		t.templates[name] = template.Must(
-			template.ParseFiles(viewPath+name, viewPath+parent),
+			template.ParseFiles(viewPath+name, viewPath+pages.Index),
 		)
 	}
 }

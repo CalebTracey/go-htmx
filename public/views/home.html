@@ -1,0 +1,25 @@
+{{ define "home-header" }}
+<div class="app-body-header">
+    <h2>home</h2>
+    <h3>{{ index . "message" }}</h3>
+</div>
+{{ end }}
+
+{{ define "body" }}
+<!--style="background-color: #eee"-->
+<div class="app-body" >
+<!--    <div class=" left-right-fade">-->
+    <div class="app-body-content" style="background: rgba(185,185,185,0.25)">
+        {{ template "home-header" . }}
+
+        <h4>content</h4>
+        <p>{{ index . "description" }}</p>
+        <!--        <p>{{ with $x := index . "reverse" }}-->
+        <!--            {{ call $x "foobar" }} &lt;-->
+        <!--            {{ end }}-->
+        <!--        </p>-->
+    </div>
+<!--    </div>-->
+
+</div>
+{{ end }}

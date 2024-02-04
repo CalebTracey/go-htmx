@@ -1,4 +1,4 @@
-package files
+package pages
 
 const (
 	Index  = "index.html"
