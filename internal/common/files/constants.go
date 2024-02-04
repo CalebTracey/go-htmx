@@ -3,6 +3,6 @@ package files
 const (
 	Index  = "index.html"
 	Header = "header.html"
-	Body   = "body.html"
+	Home   = "home.html"
 	About  = "about.html"
 )

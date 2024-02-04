@@ -9,6 +9,7 @@ import (
 )
 
 type Handler struct {
+	Env string
 }
 
 func (h Handler) Initialize() *echo.Echo {
@@ -18,21 +19,25 @@ func (h Handler) Initialize() *echo.Echo {
 	htmlTemplates := new(templates.Templates)
 
 	htmlTemplates.Initialize(
-		templates.WithTemplate(files.Index, []string{files.Body, files.About, files.Header}),
+		templates.WithTemplate(files.Home, files.Index),
+		templates.WithTemplate(files.About, files.Index),
+		// templates.WithTemplate(files.Header, files.Index),
 	)
 
 	e.Renderer = htmlTemplates
 
-	e.GET("/", TemplateHandler(files.Index, map[string]any{
-		"app-title": "HTMX Go | home",
-		"name":      "Caleb",
-		"message":   "whats up fuck-face",
+	e.GET("/", TemplateHandler(files.Home, map[string]any{
+		"app-title":   "HTMX Go | home",
+		"description": "this is the landing page",
+		"message":     "whats up, nerd",
+		"user":        "caleb.tracey",
 	}))
 
-	e.GET("/about", TemplateHandler(files.Index, map[string]any{
-		"app-title": "HTMX Go | about",
-		"name":      "Caleb",
-		"message":   "about the fuck-face",
+	e.GET("/about", TemplateHandler(files.About, map[string]any{
+		"app-title":   "HTMX Go | about",
+		"description": "this is the about section",
+		"message":     "lots of good stuff here",
+		"user":        "caleb.tracey",
 	}))
 
 	return e

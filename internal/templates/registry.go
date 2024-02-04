@@ -2,10 +2,12 @@ package templates
 
 import (
 	"fmt"
+	"github.com/calebtracey/go-htmx/internal/common/files"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	"html/template"
 	"io"
+	"os"
 )
 
 type Templates struct {
@@ -15,14 +17,14 @@ type Templates struct {
 type TemplateMap map[string]*template.Template
 
 func (t *Templates) Render(w io.Writer, name string, data any, c echo.Context) error {
-	if templateMap := t.templates; templateMap != nil {
-		if appTemplate, found := templateMap[name]; found {
+	if t.templates != nil {
+		if _, found := t.templates[name]; found {
 			// if viewContext, isMap := data.(map[string]any); isMap {
 			// 	// Add global methods if data is a map
 			// 	viewContext["reverse"] = c.Echo().Reverse
 			// }
 			log.Infof("=== Rendering '%s'...", name)
-			return appTemplate.ExecuteTemplate(w, name, data)
+			return t.templates[name].ExecuteTemplate(w, files.Index, data)
 		} else {
 			return fmt.Errorf("template error: '%s' not found", name)
 		}
@@ -46,18 +48,21 @@ type TemplateArgs struct {
 	ComponentFiles []string
 }
 
-func WithTemplate(name string, files []string) TemplateOption {
+func WithTemplate(name, parent string) TemplateOption {
 	return func(t *Templates) {
-		var filePaths []string
-		if fileCount := len(files); fileCount > 0 {
-			filePaths = make([]string, fileCount)
-			for i, f := range files {
-				filePaths[i] = viewPath + f
-			}
+		// var filePaths []string
+		// if fileCount := len(files); fileCount > 0 {
+		// 	filePaths = make([]string, fileCount)
+		// 	for i, f := range files {
+		// 		filePaths[i] = viewPath + f
+		// 	}
+		// }
+		if pwd, err := os.Getwd(); err == nil {
+			log.Infof("=== working dir: \"%s\"", pwd)
 		}
-		filePaths = append(filePaths, viewPath+name)
+		// add the "parent" file as the last element for ParseFiles function
 		t.templates[name] = template.Must(
-			template.ParseFiles(filePaths...),
+			template.ParseFiles(viewPath+name, viewPath+parent),
 		)
 	}
 }

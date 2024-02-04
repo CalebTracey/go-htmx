@@ -1,16 +1,34 @@
 package main
 
 import (
-	"github.com/calebtracey/go-htmx/internal/routes"
+	"errors"
+	"github.com/calebtraceyco/config"
+	"github.com/labstack/gommon/log"
 )
 
+const configPath = "config.yaml"
+
 func main() {
+	defer recoverPanic()
 
-	handler := routes.Handler{}
+	if routeHandler, err := establishHandler(config.New(configPath)); err == nil {
 
-	e := handler.Initialize()
+		e := *routeHandler.Initialize()
+		e.Logger.Fatal(e.Start(localhost))
 
-	e.Logger.Fatal(e.Start(localhost))
+	} else {
+		panic(err)
+	}
+
+}
+
+var nilConfigError = errors.New("nil config")
+
+func recoverPanic() {
+	if r := recover(); r != nil {
+		log.Errorf("I panicked and am quitting: %v", r)
+		log.Error("I should be alerting someone...")
+	}
 }
 
 const localhost = "localhost:42069"

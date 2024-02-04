@@ -1,0 +1,23 @@
+{{ define "about-header" }}
+<div style=" margin: 0 1rem 0 1rem">
+    <h2>about</h2>
+    <p>{{ index . "message" }}</p>
+</div>
+{{ end }}
+
+{{ define "body" }}
+    <div style="display: flex; flex-direction: column; background-color: #e7d5d5; height: 90%; margin: 0 1rem 0 1rem;">
+
+        {{ template "about-header" . }}
+
+        <div style="background: rgba(185,185,185,0.25); padding: .5rem; margin: .5rem;">
+            <h3>content</h3>
+            <p>{{ index . "description" }}</p>
+            <!--        <p>{{ with $x := index . "reverse" }}-->
+            <!--            {{ call $x "foobar" }} &lt;-->
+            <!--            {{ end }}-->
+            <!--        </p>-->
+        </div>
+
+    </div>
+{{ end }}
