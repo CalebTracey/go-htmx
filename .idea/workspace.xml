@@ -4,26 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467855f-4a90-4901-bf4f-aa774beb9c8c" name="Changes" comment="templates working state but live reload is fucked up">
-      <change afterPath="$PROJECT_DIR$/.air.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/common/error/error.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dist/bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/button.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/intex.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp/build-errors.log" afterDir="false" />
+    <list default="true" id="d467855f-4a90-4901-bf4f-aa774beb9c8c" name="Changes" comment="fancy css stuff">
+      <change afterPath="$PROJECT_DIR$/dist/bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/views/landing.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.air.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.air.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/svr/initialize.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/initialize.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/svr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/svr/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/svr/public/views/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/svr/public/views/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/svr/public/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/common/files/constants.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/common/pages/constants.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routes/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/common/pages/constants.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/common/pages/constants.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routes/initialize.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/initialize.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/templates/registry.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/templates/registry.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/bodyheader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/views/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/views/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/button.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/button.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intex.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/build-errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/build-errors.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,12 +71,15 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
+    "javascript.nodejs.core.library.configured.version": "16.20.2",
+    "javascript.nodejs.core.library.typings.version": "16.18.79",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/calebtracey/go/src/github.com/calebtracey/go-htmx/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -89,7 +94,7 @@
       <recent name="$PROJECT_DIR$/cmd" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/calebtracey/go-htmx/cmd/svr">
+  <component name="RunManager" selected="npm.build">
     <configuration name="go build github.com/calebtracey/go-htmx" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go-htmx" />
       <working_directory value="$PROJECT_DIR$" />
@@ -118,12 +123,24 @@
       <filePath value="$PROJECT_DIR$/cmd/svr/main.go" />
       <method v="2" />
     </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Go Build.go build github.com/calebtracey/go-htmx/cmd/svr" />
       <item itemvalue="Go Build.go build github.com/calebtracey/go-htmx" />
+      <item itemvalue="npm.build" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="Go Build.go build github.com/calebtracey/go-htmx" />
       </list>
     </recent_temporary>
@@ -138,7 +155,8 @@
       <updated>1706927296803</updated>
       <workItem from="1706927298713" duration="4470000" />
       <workItem from="1706975356082" duration="1302000" />
-      <workItem from="1706976864240" duration="34759000" />
+      <workItem from="1706976864240" duration="37057000" />
+      <workItem from="1707062457341" duration="30040000" />
     </task>
     <task id="LOCAL-00001" summary="templates working state">
       <option name="closed" value="true" />
@@ -156,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707010179602</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fancy css stuff">
+      <option name="closed" value="true" />
+      <created>1707025385606</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707025385606</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,20 +191,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="templates working state" />
     <MESSAGE value="templates working state but live reload is fucked up" />
-    <option name="LAST_COMMIT_MESSAGE" value="templates working state but live reload is fucked up" />
+    <MESSAGE value="fancy css stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="fancy css stuff" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/templates/registry.go</url>
-          <line>53</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

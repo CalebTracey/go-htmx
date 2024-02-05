@@ -2,7 +2,6 @@ package templates
 
 import (
 	"fmt"
-	"github.com/calebtracey/go-htmx/internal/common/pages"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	"html/template"
@@ -10,20 +9,21 @@ import (
 )
 
 type Templates struct {
-	templates TemplateMap
+	Map TemplateMap
 }
 
 type TemplateMap map[string]*template.Template
 
 func (t *Templates) Render(w io.Writer, name string, data any, c echo.Context) error {
-	if t.templates != nil {
-		if _, found := t.templates[name]; found {
+	if t.Map != nil {
+		log.Infof("=== template map at render: %v", t.Map)
+		if render, found := t.Map[name]; found {
 			// if viewContext, isMap := data.(map[string]any); isMap {
 			// 	// Add global methods if data is a map
 			// 	viewContext["reverse"] = c.Echo().Reverse
 			// }
-			log.Infof("=== Rendering '%s'...", name)
-			return t.templates[name].ExecuteTemplate(w, pages.Index, data)
+			log.Infof("=== rendering template '%s'...", name)
+			return render.ExecuteTemplate(w, name, data)
 		} else {
 			return fmt.Errorf("template error: '%s' not found", name)
 		}
@@ -33,12 +33,12 @@ func (t *Templates) Render(w io.Writer, name string, data any, c echo.Context) e
 
 func (t *Templates) Add(options ...TemplateOption) {
 	if templateCount := len(options); templateCount > 0 {
-		t.templates = make(TemplateMap, templateCount)
+		t.Map = make(TemplateMap, templateCount)
 		for _, opt := range options {
 			opt(t)
 		}
 	} else {
-		log.Warn("missing templates")
+		log.Warn("missing template map")
 	}
 }
 
@@ -49,12 +49,26 @@ type TemplateArgs struct {
 	ComponentFiles []string
 }
 
-func With(name string) TemplateOption {
+func With(tmpl string, content []string) TemplateOption {
 	return func(t *Templates) {
-		t.templates[name] = template.Must(
-			template.ParseFiles(viewPath+name, viewPath+pages.Index),
-		)
+		if tmpl != "" {
+			var contentFiles = []string{ViewPath + tmpl}
+
+			if len(content) > 0 {
+				for _, loc := range content {
+					contentFiles = append(contentFiles, ViewPath+loc)
+				}
+			}
+			log.Infof("=== 1. template map before: %v", t.Map)
+			log.Infof("=== 2. contentFiles for template \"%s\": %v", tmpl, contentFiles)
+			t.Map[tmpl] = template.Must(
+				template.ParseFiles(contentFiles...),
+			)
+			log.Infof("=== 3. template map after: %v", t.Map)
+		} else {
+			log.Panicf("template name cannot be nil")
+		}
 	}
 }
 
-const viewPath = "public/views/"
+const ViewPath = "public/views/"

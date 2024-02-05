@@ -1,8 +1,9 @@
 package pages
 
 const (
-	Index  = "index.html"
-	Header = "header.html"
-	Home   = "home.html"
-	About  = "about.html"
+	Index      = "index.html"
+	BodyHeader = "bodyheader.html"
+	Home       = "home.html"
+	About      = "about.html"
+	Landing    = "landing.html"
 )

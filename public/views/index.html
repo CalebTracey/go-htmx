@@ -1,30 +1,59 @@
 {{ define "index.html" }}
 <html lang="en">
-<head>
+  <head>
     <title>{{ template "title" . }}</title>
-<!--    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../../css/style.css" rel="stylesheet">
-    <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
-    <script src="/dist/bundle.js"></script>
-</head>
-    <body style="margin: 0">
-        {{ template "header" . }}
-        {{ template "body" . }}
-    </body>
+    <script type="module" src="../../dist/bundle.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../css/output.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans"
+    />
+  </head>
+
+  <body class="max-h-screen">
+    <div id="app-nav" class="app-body">
+      {{ template "header" . }} {{ template "body-header" . }} {{ template
+      "body" . }}
+    </div>
+  </body>
 </html>
-{{ end }}
+{{ end }} {{ define "header" }}
+<div class="text-white m-5">
+  <a
+    class="p2 text-4xl hover:cursor-pointer"
+    hx-get="/"
+    hx-trigger="click"
+    hx-target="#app-nav"
+    hx-swap="outerHTML"
+  >
+    this is a header
+  </a>
 
-{{ define "header" }}
-<div class="app-header">
-    <h1>this is a header</h1>
-    <span style="padding: 2rem"></span>
-    <button onclick="window.location.assign('/about')" type="button">about</button>
-    <span style="padding: 2rem"></span>
-    <span>{{ index . "user" }}</span>
+  <button
+    class="m-5 transition ease-in-out delay-150 bg-transparent hover:-translate-y-1 hover:scale-110 duration-300"
+    hx-get="/home"
+    hx-trigger="click"
+    hx-target="#app-nav"
+    hx-swap="outerHTML"
+    type="button"
+  >
+    home
+  </button>
+
+  <button
+    class="m-5 transition ease-in-out delay-150 bg-transparent hover:-translate-y-1 hover:scale-110 duration-300"
+    hx-get="/about"
+    hx-trigger="click"
+    hx-target="#app-nav"
+    hx-swap="outerHTML"
+    type="button"
+  >
+    about
+  </button>
+
+  <span>{{ index . "user" }}</span>
 </div>
-{{ end }}
-
-{{define "title"}}
-    {{index . "app-title"}}
-{{end}}
+{{ end }} {{define "title"}} HTML Go | {{index . "page"}} {{end}}

@@ -21,5 +21,10 @@
 # Go workspace file
 go.work
 
+yarn.lock
+go-htmx.iml
+
 /.idea/
 /tmp/
+/node_modules/
+/dist/

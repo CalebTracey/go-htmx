@@ -1,25 +1,10 @@
-{{ define "about-header" }}
-<div class="app-body-header">
-    <h2>about</h2>
-    <h3>{{ index . "message" }}</h3>
-</div>
-{{ end }}
-
 {{ define "body" }}
-<!--style="background-color: #e7d5d5"-->
-    <div class="app-body" >
-
-        {{ template "about-header" . }}
-
-        <div class="app-body-content" style="background: rgba(185,185,185,0.25);">
-            <h4>content</h4>
-            <p>{{ index . "description" }}</p>
-            <!--        <p>{{ with $x := index . "reverse" }}-->
-            <!--            {{ call $x "foobar" }} &lt;-->
-            <!--            {{ end }}-->
-            <!--        </p>-->
-        </div>
-
-    </div>
-
+<div class="container m-10 p-5">
+  <h4 class="text-2xl text-white">content</h4>
+  <p>{{ index . "description" }}</p>
+  <!--        <p>{{ with $x := index . "reverse" }}-->
+  <!--            {{ call $x "foobar" }} &lt;-->
+  <!--            {{ end }}-->
+  <!--        </p>-->
+</div>
 {{ end }}

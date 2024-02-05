@@ -13,17 +13,14 @@ func main() {
 
 	appConfig := config.New(configPath)
 
-	if routeHandler, err := routes.HandlerConfig(appConfig); err == nil {
-		if routeHandler := routeHandler.Initialize(); routeHandler != nil {
+	if handler, err := routes.HandlerConfig(appConfig); err == nil {
+		if handler := handler.Initialize(); handler != nil {
 			// run the app
-			routeHandler.Logger.Fatal(routeHandler.Start(hostName + appConfig.Port))
+			handler.Logger.Fatal(handler.Start(hostName + appConfig.Port))
 		}
-		// blah asdasd
-
 	} else {
 		log.Fatalf("failed to establish handler: %v", err)
 	}
-
 }
 
 func recoverPanic() {
@@ -34,4 +31,3 @@ func recoverPanic() {
 }
 
 const hostName = "localhost:"
-const htmxSource = "https://unpkg.com/htmx.org@1.9.6"
