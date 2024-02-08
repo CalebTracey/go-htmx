@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467855f-4a90-4901-bf4f-aa774beb9c8c" name="Changes" comment="nav bar htmx get/swap - working state + tailwindcss">
+    <list default="true" id="d467855f-4a90-4901-bf4f-aa774beb9c8c" name="Changes" comment="handler cleanup">
+      <change afterPath="$PROJECT_DIR$/public/public.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/svr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/svr/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/views/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/views/bodyheader.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/bodyheader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/views/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routes/initialize.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/initialize.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/views/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +141,7 @@
       <workItem from="1706927298713" duration="4470000" />
       <workItem from="1706975356082" duration="1302000" />
       <workItem from="1706976864240" duration="37057000" />
-      <workItem from="1707062457341" duration="31525000" />
+      <workItem from="1707062457341" duration="33423000" />
     </task>
     <task id="LOCAL-00001" summary="templates working state">
       <option name="closed" value="true" />
@@ -175,7 +175,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707106080561</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="view cleanup + style stuff">
+      <option name="closed" value="true" />
+      <created>1707107714387</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707107714387</updated>
+    </task>
+    <task id="LOCAL-00006" summary="handler cleanup">
+      <option name="closed" value="true" />
+      <created>1707107796651</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707107796651</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,7 +202,9 @@
     <MESSAGE value="templates working state but live reload is fucked up" />
     <MESSAGE value="fancy css stuff" />
     <MESSAGE value="nav bar htmx get/swap - working state + tailwindcss" />
-    <option name="LAST_COMMIT_MESSAGE" value="nav bar htmx get/swap - working state + tailwindcss" />
+    <MESSAGE value="view cleanup + style stuff" />
+    <MESSAGE value="handler cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="handler cleanup" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

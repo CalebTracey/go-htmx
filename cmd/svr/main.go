@@ -26,7 +26,7 @@ func main() {
 func recoverPanic() {
 	if r := recover(); r != nil {
 		log.Error("=== the app panicked...\n")
-		log.Errorf("=== recover: %v", r)
+		log.Errorf("=== this is bad: %v", r)
 	}
 }
 

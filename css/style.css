@@ -30,8 +30,7 @@
 }
 
 .app-body::before,
-.app-body::after,
-.left-right-fade{
+.app-body::after{
     content: '';
     position: absolute;
     top: 0;
@@ -51,15 +50,15 @@
 
 .app-body::after {
     bottom: 0;
-    background: linear-gradient(to top, rgba(0, 0, 65, .5), black);
+    background: linear-gradient(to top, rgba(0, 0, 65, 1), black);
 }
 
-.left-right-fade {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none; /* Ensures the nested div doesn't interfere with pointer events */
-    z-index: -1;
+/*.left-right-fade {*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    pointer-events: none; !* Ensures the nested div doesn't interfere with pointer events *!*/
+/*    z-index: -1;*/
 
-}
+/*}*/
