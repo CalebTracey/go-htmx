@@ -9,12 +9,7 @@ import (
 )
 
 func (h Handler) Initialize() *echo.Echo {
-	e := echo.New()
-
-	e.Use(middleware.Logger())
-
-	e.Static("dist", "dist")
-	e.Static("css", "css")
+	e := routeHandler()
 
 	htmlTemplates := new(templates.Templates)
 
@@ -27,9 +22,23 @@ func (h Handler) Initialize() *echo.Echo {
 	log.Infof("htmlTemplates: %v", htmlTemplates)
 	e.Renderer = htmlTemplates
 
-	e.GET("/", navigateLanding)
-	e.GET("/home", navigateHome)
-	e.GET("/about", navigateAbout)
+	e.GET(landingPath, navigateLanding)
+	e.GET(homePath, navigateHome)
+	e.GET(aboutPath, navigateAbout)
 
 	return e
 }
+
+func routeHandler() *echo.Echo {
+	e := echo.New()
+	e.Use(middleware.Logger())
+	e.Static("dist", "dist")
+	e.Static("css", "css")
+	return e
+}
+
+const (
+	landingPath = "/"
+	homePath    = "home"
+	aboutPath   = "about"
+)

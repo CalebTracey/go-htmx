@@ -1,25 +1,33 @@
 package main
 
 import (
+	"github.com/calebtracey/go-htmx/internal/common/apperror"
 	"github.com/calebtracey/go-htmx/internal/routes"
 	"github.com/calebtraceyco/config"
 	"github.com/labstack/gommon/log"
 )
 
-const configPath = "cmd/svr/config.yaml"
+const (
+	configPath = "cmd/svr/config.yaml"
+	hostName   = "localhost:"
+)
 
 func main() {
 	defer recoverPanic()
 
 	appConfig := config.New(configPath)
 
-	if handler, err := routes.HandlerConfig(appConfig); err == nil {
-		if handler := handler.Initialize(); handler != nil {
-			// run the app
-			handler.Logger.Fatal(handler.Start(hostName + appConfig.Port))
-		}
-	} else {
-		log.Fatalf("failed to establish handler: %v", err)
+	var handler *routes.Handler
+	var handlerErr error
+
+	if handler, handlerErr = routes.HandlerConfig(appConfig); handlerErr != nil {
+		log.Fatalf(apperror.HandlerErrFmt, handlerErr)
+	}
+	if routeHandler := handler.Initialize(); handler != nil {
+		// run the app
+		routeHandler.Logger.Fatal(
+			routeHandler.Start(hostName + appConfig.Port),
+		)
 	}
 }
 
@@ -29,5 +37,3 @@ func recoverPanic() {
 		log.Errorf("=== this is bad: %v", r)
 	}
 }
-
-const hostName = "localhost:"

@@ -50,12 +50,11 @@ func navigateAbout(ctx echo.Context) error {
 	})
 }
 
-func navigationHandler(fileName string, data map[string]any) echo.HandlerFunc {
-
-	return func(ctx echo.Context) error {
-		log.Infof("templateHandler: rendering '%s'...", fileName)
-		return ctx.Render(http.StatusOK, pages.Index, data)
-	}
-}
+// func navigationHandler(fileName string, data map[string]any) echo.HandlerFunc {
+// 	return func(ctx echo.Context) error {
+// 		log.Infof("templateHandler: rendering '%s'...", fileName)
+// 		return ctx.Render(http.StatusOK, pages.Index, data)
+// 	}
+// }
 
 var nilConfigError = errors.New("nil config")
