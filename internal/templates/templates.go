@@ -1,7 +1,10 @@
 package templates
 
 import (
+	"errors"
 	"fmt"
+	"github.com/calebtracey/go-htmx/internal/common/apperror"
+	"github.com/calebtracey/go-htmx/internal/common/paths"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	"html/template"
@@ -31,18 +34,23 @@ func (t *Templates) Render(w io.Writer, name string, data any, c echo.Context) e
 	return fmt.Errorf("template: '%s' not registered", name)
 }
 
-func (t *Templates) Add(options ...TemplateOption) {
-	if templateCount := len(options); templateCount > 0 {
-		t.Map = make(TemplateMap, templateCount)
-		for _, opt := range options {
-			opt(t)
-		}
-	} else {
-		log.Warn("missing template map")
+func (t *Templates) Add(options ...TemplateOption) error {
+	var templateCount int
+	if templateCount = len(options); templateCount <= 0 {
+		return apperror.NoTemplateError
 	}
+
+	t.Map = make(TemplateMap, templateCount)
+	for _, opt := range options {
+
+		if optErr := opt(t); optErr != nil {
+			return optErr
+		}
+	}
+	return nil // success
 }
 
-type TemplateOption func(*Templates)
+type TemplateOption func(*Templates) error
 
 type TemplateArgs struct {
 	FileName       string
@@ -50,25 +58,23 @@ type TemplateArgs struct {
 }
 
 func With(tmpl string, content []string) TemplateOption {
-	return func(t *Templates) {
-		if tmpl != "" {
-			var contentFiles = []string{ViewPath + tmpl}
-
-			if len(content) > 0 {
-				for _, loc := range content {
-					contentFiles = append(contentFiles, ViewPath+loc)
-				}
-			}
-			log.Infof("=== 1. template map before: %v", t.Map)
-			log.Infof("=== 2. contentFiles for template \"%s\": %v", tmpl, contentFiles)
-			t.Map[tmpl] = template.Must(
-				template.ParseFiles(contentFiles...),
-			)
-			log.Infof("=== 3. template map after: %v", t.Map)
-		} else {
-			log.Panicf("template name cannot be nil")
+	return func(t *Templates) error {
+		if tmpl == "" {
+			return errors.New("template name cannot be nil")
 		}
+		contentFiles := []string{paths.ViewPath + tmpl}
+
+		if len(content) > 0 {
+			for _, loc := range content {
+				contentFiles = append(contentFiles, paths.ViewPath+loc)
+			}
+		}
+		log.Infof("=== 1. template map before: %v", t.Map)
+		log.Infof("=== 2. contentFiles for template \"%s\": %v", tmpl, contentFiles)
+		t.Map[tmpl] = template.Must(
+			template.ParseFiles(contentFiles...),
+		)
+		log.Infof("=== 3. template map after: %v", t.Map)
+		return nil // success
 	}
 }
-
-const ViewPath = "public/views/"
