@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"errors"
+	"github.com/calebtracey/go-htmx/internal/common/apperror"
 	"github.com/calebtracey/go-htmx/internal/common/pages"
 	"github.com/calebtraceyco/config"
 	"github.com/labstack/echo/v4"
@@ -17,7 +17,7 @@ func HandlerConfig(cfg *config.Config) (*Handler, error) {
 	if cfg != nil {
 		return &Handler{Env: cfg.Env}, nil
 	}
-	return nil, nilConfigError
+	return nil, apperror.NilConfigError
 }
 
 func navigateLanding(ctx echo.Context) error {
@@ -49,12 +49,3 @@ func navigateAbout(ctx echo.Context) error {
 		"user":        "caleb.tracey",
 	})
 }
-
-// func navigationHandler(fileName string, data map[string]any) echo.HandlerFunc {
-// 	return func(ctx echo.Context) error {
-// 		log.Infof("templateHandler: rendering '%s'...", fileName)
-// 		return ctx.Render(http.StatusOK, pages.Index, data)
-// 	}
-// }
-
-var nilConfigError = errors.New("nil config")
