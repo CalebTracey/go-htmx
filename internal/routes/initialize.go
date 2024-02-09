@@ -10,9 +10,8 @@ import (
 )
 
 func (h Handler) Initialize() *echo.Echo {
-	e := routeHandler()
 
-	htmlTemplates := new(templates.Templates)
+	var htmlTemplates = make(templates.TemplateMap)
 
 	if templateErr := htmlTemplates.Add(
 		templates.With(pages.Index, []string{pages.Landing, pages.BodyHeader}),
@@ -23,7 +22,8 @@ func (h Handler) Initialize() *echo.Echo {
 	}
 
 	log.Infof("htmlTemplates: %v", htmlTemplates)
-	e.Renderer = htmlTemplates
+
+	e := routeHandler(htmlTemplates)
 
 	e.GET(paths.Landing, navigateLanding)
 	e.GET(paths.Home, navigateHome)
@@ -32,10 +32,11 @@ func (h Handler) Initialize() *echo.Echo {
 	return e
 }
 
-func routeHandler() *echo.Echo {
+func routeHandler(htmlTemplates templates.TemplateMap) *echo.Echo {
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Static("dist", "dist")
 	e.Static("css", "css")
+	e.Renderer = htmlTemplates
 	return e
 }

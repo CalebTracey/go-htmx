@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467855f-4a90-4901-bf4f-aa774beb9c8c" name="Changes" comment="added template errors + cleanup + go.sum">
-      <change beforePath="$PROJECT_DIR$/internal/common/apperror/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/common/apperror/error.go" afterDir="false" />
+    <list default="true" id="d467855f-4a90-4901-bf4f-aa774beb9c8c" name="Changes" comment="added nil config error">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/routes/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/handlers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routes/initialize.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/initialize.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/templates/templates.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/templates/templates.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +141,7 @@
       <workItem from="1706976864240" duration="37057000" />
       <workItem from="1707062457341" duration="33423000" />
       <workItem from="1707410259870" duration="2351000" />
-      <workItem from="1707496413420" duration="411000" />
+      <workItem from="1707496413420" duration="1932000" />
     </task>
     <task id="LOCAL-00001" summary="templates working state">
       <option name="closed" value="true" />
@@ -213,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707496736679</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added nil config error">
+      <option name="closed" value="true" />
+      <created>1707496849016</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1707496849016</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +240,8 @@
     <MESSAGE value="go file cleanup" />
     <MESSAGE value="added template errors + cleanup" />
     <MESSAGE value="added template errors + cleanup + go.sum" />
-    <option name="LAST_COMMIT_MESSAGE" value="added template errors + cleanup + go.sum" />
+    <MESSAGE value="added nil config error" />
+    <option name="LAST_COMMIT_MESSAGE" value="added nil config error" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

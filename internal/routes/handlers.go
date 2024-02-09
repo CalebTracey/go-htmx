@@ -5,7 +5,6 @@ import (
 	"github.com/calebtracey/go-htmx/internal/common/pages"
 	"github.com/calebtraceyco/config"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/gommon/log"
 	"net/http"
 )
 
@@ -21,7 +20,6 @@ func HandlerConfig(cfg *config.Config) (*Handler, error) {
 }
 
 func navigateLanding(ctx echo.Context) error {
-	log.Infof("navigateLanding: rendering '%s'...", pages.Landing)
 	return ctx.Render(http.StatusOK, pages.Index, map[string]any{
 		"page":        "landing",
 		"description": "this is the landing page",
@@ -31,7 +29,6 @@ func navigateLanding(ctx echo.Context) error {
 }
 
 func navigateHome(ctx echo.Context) error {
-	log.Infof("navigateHome: rendering '%s'...", pages.Home)
 	return ctx.Render(http.StatusOK, pages.Index, map[string]any{
 		"page":        "home",
 		"description": "this is the home page",
@@ -41,7 +38,6 @@ func navigateHome(ctx echo.Context) error {
 }
 
 func navigateAbout(ctx echo.Context) error {
-	log.Infof("navigateAbout: rendering '%s'...", pages.About)
 	return ctx.Render(http.StatusOK, pages.Index, map[string]any{
 		"page":        "about",
 		"description": "this is the about section",
